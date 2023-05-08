@@ -1,14 +1,15 @@
 export default class ImageAnimator {
-    constructor(images, wi_styles, im_styles) {
+    constructor(images, wi_styles, im_styles, name, frame_rate, animation_speed, max_pos) {
         this.images = images;
         this.wi_styles = wi_styles;
         this.im_styles = im_styles;
+        this.name = name;
 
         this.currentImageIndex = 0;
         this.position = 0;
-        this.ANIMATION_SPEED = 15;
-        this.FRAME_RATE = 15;
-        this.MAX_POSITION = 600;
+        this.ANIMATION_SPEED = animation_speed;
+        this.FRAME_RATE = frame_rate;
+        this.MAX_POSITION = max_pos;
 
         this.moving = null;
     }
@@ -36,7 +37,7 @@ export default class ImageAnimator {
 
             const imagePath = this.images[this.currentImageIndex];
             const transform = `translateX(${this.position}%)`;
-            const imageElement = document.getElementById('moving-image');
+            const imageElement = document.getElementById(this.name);
             if (imageElement) {
             imageElement.src = imagePath;
             imageElement.style.transform = transform;

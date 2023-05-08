@@ -1,11 +1,19 @@
 import ImageAnimator from './image_animator.jsx';
 
-const widgetStyles = {
-  width: '200px',
-  height: '200px',
+const mamaWidgetStyles = {
+  width: '250px',
+  height: '250px',
+  position: 'fixed',
+  bottom: '16px',
+  left: '-200px',
+};
+
+const kayaWidgetStyles = {
+  width: '160px',
+  height: '160px',
   position: 'fixed',
   bottom: '0',
-  left: '0',
+  left: '-200px',
 };
 
 const imageStyles = {
@@ -17,15 +25,15 @@ const imageStyles = {
   transition: 'transform 0.5s ease',
 };
 
-// const images = [
-//   'PixelArt/Kaya/Kaya_walk1.png',
-//   'PixelArt/Kaya/Kaya_walk2.png',
-//   'PixelArt/Kaya/Kaya_walk3.png',
-//   'PixelArt/Kaya/Kaya_walk4.png',
-//   'PixelArt/Kaya/Kaya_walk5.png',
-// ];
+const kaya_im = [
+  'PixelArt/Kaya/Kaya_walk1.png',
+  'PixelArt/Kaya/Kaya_walk2.png',
+  'PixelArt/Kaya/Kaya_walk3.png',
+  'PixelArt/Kaya/Kaya_walk4.png',
+  'PixelArt/Kaya/Kaya_walk5.png',
+];
 
-const images = [
+const mama_im = [
   'PixelArt/Mama/walk1.png',
   'PixelArt/Mama/walk2.png',
   'PixelArt/Mama/walk3.png',
@@ -34,14 +42,24 @@ const images = [
   'PixelArt/Mama/walk6.png',
  ];
 
-const ANIMATION_SPEED = 15;
+let mama_animator = new ImageAnimator(mama_im, mamaWidgetStyles, imageStyles, 'mama', 9, 24, 800);
+let kaya_animator = new ImageAnimator(kaya_im, kayaWidgetStyles, imageStyles, 'kaya', 9, 15, 1100);
 
-let im_animator = new ImageAnimator(images, widgetStyles, imageStyles);
-im_animator.start();
+
+mama_animator.start();
+
+setTimeout(() => {
+  kaya_animator.start();
+}, 700);
+
 
 export const render = () => (
-  <div style={widgetStyles}>
-    <img id="moving-image" src={images[0]} style={imageStyles} />
+  <div>
+    <div style={mamaWidgetStyles}>
+      <img id="mama" src={mama_im[0]} style={imageStyles} />
+    </div>
+    <div style={kayaWidgetStyles}>
+      <img id="kaya" src={kaya_im[0]} style={imageStyles} />
+    </div>
   </div>
 );
-
