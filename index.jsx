@@ -1,3 +1,4 @@
+import ImageAnimator from './image_animator.jsx';
 
 const widgetStyles = {
   width: '200px',
@@ -16,41 +17,27 @@ const imageStyles = {
   transition: 'transform 0.5s ease',
 };
 
+// const images = [
+//   'PixelArt/Kaya/Kaya_walk1.png',
+//   'PixelArt/Kaya/Kaya_walk2.png',
+//   'PixelArt/Kaya/Kaya_walk3.png',
+//   'PixelArt/Kaya/Kaya_walk4.png',
+//   'PixelArt/Kaya/Kaya_walk5.png',
+// ];
+
 const images = [
-  'PixelArt/Kaya_walk1.png',
-  'PixelArt/Kaya_walk2.png',
-  'PixelArt/Kaya_walk3.png',
-  'PixelArt/Kaya_walk4.png',
-  'PixelArt/Kaya_walk5.png',
-];
+  'PixelArt/Mama/walk1.png',
+  'PixelArt/Mama/walk2.png',
+  'PixelArt/Mama/walk3.png',
+  'PixelArt/Mama/walk4.png',
+  'PixelArt/Mama/walk5.png',
+  'PixelArt/Mama/walk6.png',
+ ];
 
-let currentImageIndex = 0;
-let position = 0;
-const INTERVAL = 15;
-const IMG_SWITCH_INTERVAL = 15;
-const MAX_POSITION = 600;
+const ANIMATION_SPEED = 15;
 
-function moveImage() {
-  if (position >= MAX_POSITION) {
-    clearInterval(moving);
-  }
-
-  position += 1;
-
-  if (position % IMG_SWITCH_INTERVAL === 0) {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-
-    const imagePath = images[currentImageIndex];
-    const transform = `translateX(${position}%)`;
-    const imageElement = document.getElementById('moving-image');
-    if (imageElement) {
-      imageElement.src = imagePath;
-      imageElement.style.transform = transform;
-    }
-  }
-}
-
-let moving = setInterval(moveImage, INTERVAL);
+let im_animator = new ImageAnimator(images, widgetStyles, imageStyles);
+im_animator.start();
 
 export const render = () => (
   <div style={widgetStyles}>
