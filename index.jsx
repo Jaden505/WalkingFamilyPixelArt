@@ -4,13 +4,10 @@ import { mama_im, kaya_im, mama_widget_styles, kaya_widget_styles, im_styles } f
 let mama_animator = new ImageAnimator(mama_im, mama_widget_styles, im_styles, 'mama', 9, 24, 800);
 let kaya_animator = new ImageAnimator(kaya_im, kaya_widget_styles, im_styles, 'kaya', 9, 15, 1100);
 
-
 mama_animator.start();
-
 setTimeout(() => {
   kaya_animator.start();
 }, 700);
-
 
 export const render = () => (
   <div>
