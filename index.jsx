@@ -1,21 +1,16 @@
 import ImageAnimator from './image_animator.jsx';
-import { mama_im, kaya_im, mama_widget_styles, kaya_widget_styles, im_styles } from './pixelart_details.jsx';
+import { img_styles, widget_styles, paths, heart, heart_img_styles, heart_widget_styles } from './pixelart_details.jsx';
 
-let mama_animator = new ImageAnimator(mama_im, mama_widget_styles, im_styles, 'mama', 9, 23.5);
-let kaya_animator = new ImageAnimator(kaya_im, kaya_widget_styles, im_styles, 'kaya', 9, 15);
-
-mama_animator.start();
-setTimeout(() => {
-  kaya_animator.start();
-}, 700);
+let animator = new ImageAnimator(paths, widget_styles, img_styles, 'MamaAndKaya', 9, 24);
+animator.start();
 
 export const render = () => (
   <div>
-    <div style={mama_widget_styles}>
-      <img id="mama" src={mama_im[0]} style={im_styles} />
+    <div style={widget_styles}>
+      <img id="MamaAndKaya" src={paths[0]} style={img_styles} />
     </div>
-    <div style={kaya_widget_styles}>
-      <img id="kaya" src={kaya_im[0]} style={im_styles} />
+    <div style={heart_widget_styles}>
+      <img id="Heart" src={heart} style={heart_img_styles} />
     </div>
   </div>
 );
