@@ -1,5 +1,5 @@
 export default class ImageAnimator {
-    constructor(images, wi_styles, im_styles, name, frame_rate, animation_speed, max_position) {
+    constructor(images, wi_styles, im_styles, name, frame_rate, animation_speed) {
         this.images = images;
         this.wi_styles = wi_styles;
         this.im_styles = im_styles;
@@ -9,7 +9,7 @@ export default class ImageAnimator {
         this.position = 0;
         this.ANIMATION_SPEED = animation_speed;
         this.FRAME_RATE = frame_rate;
-        this.MAX_POSITION = max_position;
+        this.MAX_POSITION = window.innerWidth + 250;
 
         this.moving = null;
         this.direction = 1;  // 1 or -1
@@ -27,8 +27,12 @@ export default class ImageAnimator {
       }
 
       moveImage() {
-        if (this.position >= this.MAX_POSITION || this.position < 0) {
-          this.direction *= -1;
+        const imageElement = document.getElementById(this.name);
+
+        if (imageElement) {
+            let co = imageElement.getBoundingClientRect().right;
+            if (this.direction === 1 && co > this.MAX_POSITION || this.direction === -1 && co < 0)
+            this.direction *= -1;
         }
     
         this.position += this.direction;
@@ -38,7 +42,6 @@ export default class ImageAnimator {
     
           const imagePath = this.images[this.currentImageIndex];
           let transform = `translateX(${this.position}%)`;
-          const imageElement = document.getElementById(this.name);
 
           if (this.direction === -1) {
             transform += ' scaleX(-1)';

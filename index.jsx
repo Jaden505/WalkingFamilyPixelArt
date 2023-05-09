@@ -1,8 +1,8 @@
 import ImageAnimator from './image_animator.jsx';
 import { mama_im, kaya_im, mama_widget_styles, kaya_widget_styles, im_styles } from './pixelart_details.jsx';
 
-let mama_animator = new ImageAnimator(mama_im, mama_widget_styles, im_styles, 'mama', 9, 24, 800);
-let kaya_animator = new ImageAnimator(kaya_im, kaya_widget_styles, im_styles, 'kaya', 9, 15, 1100);
+let mama_animator = new ImageAnimator(mama_im, mama_widget_styles, im_styles, 'mama', 9, 23.5);
+let kaya_animator = new ImageAnimator(kaya_im, kaya_widget_styles, im_styles, 'kaya', 9, 15);
 
 mama_animator.start();
 setTimeout(() => {
