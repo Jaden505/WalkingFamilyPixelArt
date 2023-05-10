@@ -1,5 +1,7 @@
 import ImageAnimator from './image_animator.jsx';
 import { img_styles, widget_styles, paths, heart, heart_img_styles, heart_widget_styles } from './pixelart_details.jsx';
+import animateHeart from './heart_animator.jsx';
+
 
 let animator = new ImageAnimator(paths, widget_styles, img_styles, 'MamaAndKaya', 9, 24);
 animator.start();

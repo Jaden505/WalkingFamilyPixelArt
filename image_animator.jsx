@@ -1,3 +1,5 @@
+import animateHeart from './heart_animator.jsx';
+
 export default class ImageAnimator {
     constructor(images, wi_styles, im_styles, name, frame_rate, animation_speed) {
         this.images = images;
@@ -13,6 +15,7 @@ export default class ImageAnimator {
 
         this.moving = null;
         this.direction = 1;  // 1 or -1
+        this.heart = false;
     }
 
     start() {
@@ -27,6 +30,11 @@ export default class ImageAnimator {
       }
 
       moveImage() {
+        if (!this.heart) {
+          animateHeart(true);
+          this.heart = true;
+        }
+
         const imageElement = document.getElementById(this.name);
 
         if (imageElement) {

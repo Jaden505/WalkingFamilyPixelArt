@@ -28,14 +28,17 @@ export const paths = [
 export const heart = 'PixelArt/Heart/small_heart.png'
 
 export const heart_widget_styles = {
-  width: '45px',
-  height: '25px',
+  width: '450px',
+  height: '250px',
   position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
 };
 
 export const heart_img_styles = {
   position: 'absolute',
   width: '100%',
   height: '100%',
-  transition: 'transform 0.5s ease',
+  transform: 'scale(0.2)',
 };
